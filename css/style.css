@@ -1,13 +1,13 @@
-/* General Styles */
+/* General Styles - Luminous Silver Theme */
 :root {
-    --primary-color: #2c3e50; /* آبی تیره */
-    --secondary-color: #3498db; /* آبی روشن */
-    --red-color: #e74c3c; /* قرمز اصلی */
-    --red-dark-color: #c0392b; /* قرمز تیره */
-    --card-bg: #ffffff;
-    --text-color: #333;
-    --shadow-light: rgba(0, 0, 0, 0.1);
-    --shadow-dark: rgba(0, 0, 0, 0.2);
+    --primary-color: #5f7285;   /* خاکستری تیره و سرد */
+    --secondary-color: #bdc3c7; /* نقره‌ای */
+    --accent-color: #82a0b9;    /* آبی-خاکستری ملایم */
+    --card-bg: #ffffff;        /* سفید خالص */
+    --text-color: #34495e;     /* خاکستری سربی برای متن */
+    --background-light: #f8f9fa; /* پس‌زمینه بسیار روشن */
+    --background-dark: #e9ecef;  /* پس‌زمینه نقره‌ای روشن */
+    --shadow-color: rgba(0, 0, 0, 0.08);
 }
 
 body {
@@ -15,7 +15,7 @@ body {
     line-height: 1.7;
     margin: 0;
     padding: 0;
-    background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
+    background-image: linear-gradient(to top, var(--background-dark) 0%, var(--background-light) 100%);
     color: var(--text-color);
     direction: rtl;
 }
@@ -24,7 +24,7 @@ body {
 header {
     background: var(--card-bg);
     padding: 1rem 0;
-    box-shadow: 0 4px 10px var(--shadow-light);
+    box-shadow: 0 4px 10px var(--shadow-color);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -43,7 +43,7 @@ nav .logo {
     font-size: 2.2rem;
     font-weight: 800;
     color: var(--primary-color);
-    text-shadow: 1px 1px 2px var(--shadow-light);
+    text-shadow: 1px 1px 2px var(--shadow-color);
 }
 
 nav ul {
@@ -60,10 +60,10 @@ main {
 section {
     padding: 4rem 2rem;
     margin-bottom: 2rem;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: transparent; /* شفاف شد تا پس‌زمینه اصلی دیده شود */
     border-radius: 15px;
-    box-shadow: 0 10px 25px var(--shadow-light);
-    border: 1px solid #eee;
+    box-shadow: none;
+    border: none;
 }
 
 section:last-of-type {
@@ -76,15 +76,12 @@ section h2 {
     font-size: 2.8rem;
     font-weight: 700;
     color: var(--primary-color);
-    text-shadow: 1px 1px 3px var(--shadow-light);
+    text-shadow: 1px 1px 3px var(--shadow-color);
 }
 
 .hero {
     text-align: center;
     padding: 5rem 1rem;
-    background: none;
-    box-shadow: none;
-    border: none;
 }
 
 .hero h1 {
@@ -99,62 +96,60 @@ section h2 {
     gap: 2.5rem;
 }
 
-/* === START: GLOWING EFFECT CODE === */
-/* کدی که برای افکت نورانی اضافه شد */
-
+/* === Luminous Silver Border Effect === */
 .glowing-card {
-  position: relative; /* برای کار کردن انیمیشن ضروری است */
-  overflow: hidden; /* بخش‌های اضافی انیمیشن را پنهان می‌کند */
-  z-index: 1;
+  position: relative;
 }
 
 .glowing-card::before {
   content: '';
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 250%; /* بزرگتر از کادر برای چرخش کامل */
-  height: 250%;
-  z-index: -1;
+  left: -2px;
+  top: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  /* گرادیان نورانی سفید و نقره‌ای */
   background: conic-gradient(
-    from 0deg,
-    #3498db, /* رنگ نورانی اول */
-    #9b59b6, /* رنگ نورانی دوم */
-    #3498db, /* تکرار برای چرخش یکنواخت */
-    transparent 40%
+    transparent,
+    transparent,
+    transparent,
+    #ffffff, /* نور سفید درخشان */
+    var(--secondary-color) /* نور نقره‌ای */
   );
-  animation: rotate-glow 4s linear infinite; /* اجرای انیمیشن */
-  transform-origin: center center;
+  border-radius: 16px;
+  z-index: -1;
+  animation: rotate-glow 3s linear infinite;
 }
 
 @keyframes rotate-glow {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg);
+  0% {
+    transform: rotate(0deg);
   }
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
+  100% {
+    transform: rotate(360deg);
   }
 }
+/* === END Effect === */
 
-/* === END: GLOWING EFFECT CODE === */
-
-
-.product-card {
+.product-card, #about {
     background: var(--card-bg);
     border-radius: 12px;
-    box-shadow: 0 8px 15px var(--shadow-light), 0 0 5px var(--shadow-light);
+    box-shadow: 0 8px 25px var(--shadow-color);
     padding: 1.5rem;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-top: 4px solid var(--secondary-color);
-    /* این دو خط پایین برای هماهنگی با افکت نورانی است */
-    position: relative; 
-    z-index: 2;
+    z-index: 1;
+}
+
+#about {
+    padding: 4rem 2rem;
+    border-top: none;
 }
 
 .product-card:hover {
     transform: translateY(-12px) scale(1.02);
-    box-shadow: 0 15px 30px var(--shadow-dark), 0 0 10px var(--shadow-light);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
 }
 
 .product-card img {
@@ -163,6 +158,7 @@ section h2 {
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 1.5rem;
+    border: 1px solid var(--background-dark);
 }
 
 .product-card h3 {
@@ -175,62 +171,55 @@ section h2 {
 /* General Button Styles */
 .btn {
     display: inline-block;
-    color: #fff;
+    color: var(--background-light);
     padding: 12px 25px;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 700;
     transition: all 0.3s ease;
     border: none;
+    background: var(--primary-color);
 }
 
-.hero-btn {
-    background: var(--secondary-color);
-    box-shadow: 0 4px var(--shadow-dark);
-}
-
-.hero-btn:hover {
-    background: #2980b9;
+.btn:hover {
+    background: var(--text-color);
     transform: translateY(-2px);
 }
 
-/* استایل جدید برای دکمه ارتباط با ما */
+/* دکمه ارتباط با ما با تم جدید */
 #contact .btn {
-  background-color: var(--red-color);
-  padding: 15px 30px;
-  font-size: 16px;
-  box-shadow: 0 6px var(--red-dark-color);
-  animation: pulse-effect 2s infinite;
+  background-color: var(--accent-color);
+  box-shadow: 0 6px #6a8aaa;
+  animation: pulse-effect 2.5s infinite;
 }
 
 #contact .btn:hover {
-  background-color: var(--red-dark-color);
-  box-shadow: 0 4px #962d22;
+  background-color: #7998b5;
+  box-shadow: 0 4px #5e7e9b;
   transform: translateY(2px);
 }
 
 #contact .btn:active {
-  box-shadow: 0 0 var(--red-dark-color);
+  box-shadow: 0 0 #5e7e9b;
   transform: translateY(6px);
 }
 
-/* انیمیشن نور دور دکمه */
 @keyframes pulse-effect {
   0% {
-    box-shadow: 0 6px var(--red-dark-color), 0 0 0 0 rgba(231, 76, 60, 0.7);
+    box-shadow: 0 6px #6a8aaa, 0 0 0 0 rgba(189, 195, 199, 0.7);
   }
   70% {
-    box-shadow: 0 6px var(--red-dark-color), 0 0 0 20px rgba(231, 76, 60, 0);
+    box-shadow: 0 6px #6a8aaa, 0 0 0 20px rgba(189, 195, 199, 0);
   }
   100% {
-    box-shadow: 0 6px var(--red-dark-color), 0 0 0 0 rgba(231, 76, 60, 0);
+    box-shadow: 0 6px #6a8aaa, 0 0 0 0 rgba(189, 195, 199, 0);
   }
 }
 
 /* Footer */
 footer {
     background: var(--primary-color);
-    color: #fff;
+    color: var(--background-light);
     text-align: center;
     padding: 2rem 0;
     margin-top: 2rem;
@@ -262,7 +251,7 @@ footer .admin-link:hover {
     padding: 2rem;
     background: var(--card-bg);
     border-radius: 8px;
-    box-shadow: 0 4px 8px var(--shadow-light);
+    box-shadow: 0 4px 8px var(--shadow-color);
 }
 .form-group { margin-bottom: 1.5rem; }
 .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 700; }
