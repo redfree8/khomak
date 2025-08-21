@@ -1,14 +1,11 @@
-/* General Styles */
+/* General Styles for secondary pages like admin.html */
 :root {
     --primary-color: #5f7285;   
-    --secondary-color: #bdc3c7; 
     --card-bg: #ffffff;        
     --text-color: #34495e;     
     --background-light: #f8f9fa; 
     --background-dark: #e9ecef;  
     --shadow-color: rgba(0, 0, 0, 0.08);
-    --snake-red: #e74c3c;       
-    --snake-head: #ff7675;      
 }
 
 body {
@@ -21,113 +18,29 @@ body {
     direction: rtl;
 }
 
-/* Header, Nav, Sections ... (کدهای بدون تغییر) */
-header { background: var(--card-bg); padding: 1rem 0; box-shadow: 0 4px 10px var(--shadow-color); position: sticky; top: 0; z-index: 1000; }
-nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; align-items: center; padding: 0 2rem; }
-nav .logo { font-size: 2.2rem; font-weight: 800; color: var(--primary-color); text-shadow: 1px 1px 2px var(--shadow-color); }
-main { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-section { margin-bottom: 2rem; }
-section h2 { text-align: center; margin-bottom: 2.5rem; font-size: 2.8rem; font-weight: 700; color: var(--primary-color); text-shadow: 1px 1px 3px var(--shadow-color); }
-.hero { text-align: center; padding: 5rem 1rem; }
-.hero h1 { font-size: 3.2rem; font-weight: 800; }
-.product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
-
-/* === START: FINAL RED SNAKE EFFECT CODE === */
-/* کد نهایی و اصلاح شده برای افکت مار قرمز */
-
-.glowing-card {
-  position: relative;
-  padding: 3px; /* ایجاد فاصله برای نمایش نور */
-  background: transparent;
-  z-index: 1;
-  border-radius: 16px; /* هماهنگ با شعاع نور */
-}
-
-.glowing-card::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 100%;
-  height: 100%;
-  border-radius: 16px; 
-  z-index: -1;
-  
-  /* گرادیان برای ایجاد افکت مار */
-  background: conic-gradient(
-    from 180deg,
-    transparent 0deg 330deg,     
-    var(--snake-red) 330deg 355deg, 
-    var(--snake-head) 355deg 360deg,  
-    transparent 360deg
-  );
-  
-  animation: rotate-snake 3s linear infinite;
-  transform: translate(-50%, -50%) scale(1.05); /* چرخش از مرکز و کمی بزرگتر */
-}
-
-@keyframes rotate-snake {
-  0% {
-    transform: translate(-50%, -50%) scale(1.05) rotate(0deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1.05) rotate(360deg);
-  }
-}
-
-/* محتوای داخلی کارت‌ها */
-.card-inner {
+.admin-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
     background: var(--card-bg);
-    border-radius: 12px;
-    padding: 1.5rem;
-    text-align: center;
-    position: relative;
-    z-index: 2;
-}
-
-/* === END: FINAL RED SNAKE EFFECT CODE === */
-
-
-#about .card-inner {
-    padding: 4rem 2rem;
-}
-
-.product-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.product-card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
-}
-
-.product-card img {
-    max-width: 100%;
-    height: 200px;
-    object-fit: cover;
     border-radius: 8px;
-    margin-bottom: 1.5rem;
-    border: 1px solid var(--background-dark);
+    box-shadow: 0 4px 8px var(--shadow-color);
+    text-align: center;
 }
 
-.product-card h3 {
-    margin-bottom: 0.5rem;
-    color: var(--primary-color);
-    font-size: 1.4rem;
-    font-weight: 700;
+.form-group { 
+    margin-bottom: 1.5rem; 
 }
 
-/* Footer, Buttons, etc. (کدهای بدون تغییر) */
-.btn { display: inline-block; color: var(--background-light); padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: all 0.3s ease; border: none; background: var(--primary-color); }
-.btn:hover { background: var(--text-color); transform: translateY(-2px); }
-#contact .btn { background-color: #e74c3c; box-shadow: 0 6px #c0392b; animation: pulse-effect 2.5s infinite; } /* دکمه تماس را قرمز کردم تا با افکت هماهنگ باشد */
-#contact .btn:hover { background-color: #c0392b; box-shadow: 0 4px #962d22; transform: translateY(2px); }
-#contact .btn:active { box-shadow: 0 0 #962d22; transform: translateY(6px); }
-@keyframes pulse-effect { 0% { box-shadow: 0 6px #c0392b, 0 0 0 0 rgba(231, 76, 60, 0.7); } 70% { box-shadow: 0 6px #c0392b, 0 0 0 20px rgba(231, 76, 60, 0); } 100% { box-shadow: 0 6px #c0392b, 0 0 0 0 rgba(231, 76, 60, 0); } }
-footer { background: var(--primary-color); color: var(--background-light); text-align: center; padding: 2rem 0; margin-top: 2rem; }
-.designer-credit { font-size: 0.9rem; color: #ccc; margin-top: -10px; margin-bottom: 15px; }
-footer .admin-link { color: #aaa; text-decoration: none; font-size: 0.9rem; margin-top: 10px; display: block; }
-footer .admin-link:hover { color: #fff; }
-.admin-container { max-width: 800px; margin: 2rem auto; padding: 2rem; background: var(--card-bg); border-radius: 8px; box-shadow: 0 4px 8px var(--shadow-color); }
-.form-group { margin-bottom: 1.5rem; } .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 700; } .form-group input[type="file"], .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
-@media (max-width: 768px) { .hero h1 { font-size: 2.4rem; } section h2 { font-size: 2.2rem; } nav .logo { font-size: 1.8rem; } section { padding: 3rem 1rem; } }
+.form-group label { 
+    display: block; 
+    margin-bottom: 0.5rem; 
+    font-weight: 700; 
+}
+
+.form-group input, .form-group textarea { 
+    width: 100%; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+}
