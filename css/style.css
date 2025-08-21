@@ -1,18 +1,21 @@
 /* General Styles */
 :root {
-    --primary-color: #2c3e50;
-    --secondary-color: #3498db;
-    --background-color: #f4f4f4;
-    --text-color: #333;
+    --primary-color: #2c3e50; /* آبی تیره */
+    --secondary-color: #3498db; /* آبی روشن */
+    --red-color: #e74c3c; /* قرمز اصلی */
+    --red-dark-color: #c0392b; /* قرمز تیره */
     --card-bg: #ffffff;
+    --text-color: #333;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-dark: rgba(0, 0, 0, 0.2);
 }
 
 body {
     font-family: 'Vazirmatn', sans-serif;
-    line-height: 1.6;
+    line-height: 1.7;
     margin: 0;
     padding: 0;
-    background-color: var(--background-color);
+    background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
     color: var(--text-color);
     direction: rtl;
 }
@@ -20,9 +23,8 @@ body {
 /* Header and Navigation */
 header {
     background: var(--card-bg);
-    color: var(--primary-color);
     padding: 1rem 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px var(--shadow-light);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -32,34 +34,20 @@ nav {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* لوگو در وسط */
     align-items: center;
     padding: 0 2rem;
 }
 
 nav .logo {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 2.2rem; /* سایز بزرگتر */
+    font-weight: 800; /* ضخیم‌تر */
+    color: var(--primary-color);
+    text-shadow: 1px 1px 2px var(--shadow-light);
 }
 
 nav ul {
-    list-style: none;
-    display: flex;
-}
-
-nav ul li {
-    margin-right: 20px;
-}
-
-nav ul li a {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: 400;
-    transition: color 0.3s ease;
-}
-
-nav ul li a:hover {
-    color: var(--secondary-color);
+    display: none; /* منو را حذف کردیم تا لوگو تنها در مرکز باشد */
 }
 
 /* Sections */
@@ -70,8 +58,12 @@ main {
 }
 
 section {
-    padding: 4rem 0;
-    border-bottom: 1px solid #ddd;
+    padding: 4rem 2rem;
+    margin-bottom: 2rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px var(--shadow-light);
+    border: 1px solid #eee;
 }
 
 section:last-of-type {
@@ -80,68 +72,117 @@ section:last-of-type {
 
 section h2 {
     text-align: center;
-    margin-bottom: 2rem;
-    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+    font-size: 2.8rem;
+    font-weight: 700;
     color: var(--primary-color);
+    text-shadow: 1px 1px 3px var(--shadow-light);
 }
 
 .hero {
     text-align: center;
-    padding: 6rem 0;
+    padding: 5rem 1rem;
+    background: none;
+    box-shadow: none;
+    border: none;
 }
 
 .hero h1 {
-    font-size: 3rem;
+    font-size: 3.2rem;
+    font-weight: 800;
 }
 
 /* Product Grid */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .product-card {
     background: var(--card-bg);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    /* افکت برجسته و سه‌بعدی */
+    box-shadow: 0 8px 15px var(--shadow-light), 0 0 5px var(--shadow-light);
     padding: 1.5rem;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 4px solid var(--secondary-color);
 }
 
 .product-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 15px 30px var(--shadow-dark), 0 0 10px var(--shadow-light);
 }
 
 .product-card img {
     max-width: 100%;
     height: 200px;
     object-fit: cover;
-    border-radius: 5px;
-    margin-bottom: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
 }
 
 .product-card h3 {
     margin-bottom: 0.5rem;
     color: var(--primary-color);
+    font-size: 1.4rem;
+    font-weight: 700;
 }
 
-/* Buttons and Links */
+/* General Button Styles */
 .btn {
     display: inline-block;
-    background: var(--secondary-color);
     color: #fff;
     padding: 12px 25px;
-    border-radius: 5px;
+    border-radius: 8px;
     text-decoration: none;
     font-weight: 700;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
+    border: none;
 }
 
-.btn:hover {
+.hero-btn {
+    background: var(--secondary-color);
+    box-shadow: 0 4px var(--shadow-dark);
+}
+
+.hero-btn:hover {
     background: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* استایل جدید برای دکمه ارتباط با ما */
+#contact .btn {
+  background-color: var(--red-color);
+  padding: 15px 30px;
+  font-size: 16px;
+  box-shadow: 0 6px var(--red-dark-color);
+  animation: pulse-effect 2s infinite;
+}
+
+#contact .btn:hover {
+  background-color: var(--red-dark-color);
+  box-shadow: 0 4px #962d22;
+  transform: translateY(2px);
+}
+
+#contact .btn:active {
+  box-shadow: 0 0 var(--red-dark-color);
+  transform: translateY(6px);
+}
+
+/* انیمیشن نور دور دکمه */
+@keyframes pulse-effect {
+  0% {
+    box-shadow: 0 6px var(--red-dark-color), 0 0 0 0 rgba(231, 76, 60, 0.7);
+  }
+  70% {
+    box-shadow: 0 6px var(--red-dark-color), 0 0 0 20px rgba(231, 76, 60, 0);
+  }
+  100% {
+    box-shadow: 0 6px var(--red-dark-color), 0 0 0 0 rgba(231, 76, 60, 0);
+  }
 }
 
 /* Footer */
@@ -150,6 +191,14 @@ footer {
     color: #fff;
     text-align: center;
     padding: 2rem 0;
+    margin-top: 2rem;
+}
+
+.designer-credit {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-top: -10px;
+  margin-bottom: 15px;
 }
 
 footer .admin-link {
@@ -164,43 +213,23 @@ footer .admin-link:hover {
     color: #fff;
 }
 
-/* Admin Page */
+/* Admin Page (unchanged) */
 .admin-container {
     max-width: 800px;
     margin: 2rem auto;
     padding: 2rem;
     background: var(--card-bg);
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px var(--shadow-light);
 }
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-}
-
-.form-group input[type="file"],
-.form-group textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
+.form-group { margin-bottom: 1.5rem; }
+.form-group label { display: block; margin-bottom: 0.5rem; font-weight: 700; }
+.form-group input[type="file"], .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
 
 /* Responsive */
 @media (max-width: 768px) {
-    nav ul {
-        display: none; /* Simplification for this example, a full menu requires more JS */
-    }
-    .hero h1 {
-        font-size: 2.2rem;
-    }
-    section h2 {
-        font-size: 2rem;
-    }
+    .hero h1 { font-size: 2.4rem; }
+    section h2 { font-size: 2.2rem; }
+    nav .logo { font-size: 1.8rem; }
+    section { padding: 3rem 1rem; }
 }
