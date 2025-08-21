@@ -34,20 +34,20 @@ nav {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    justify-content: center; /* لوگو در وسط */
+    justify-content: center;
     align-items: center;
     padding: 0 2rem;
 }
 
 nav .logo {
-    font-size: 2.2rem; /* سایز بزرگتر */
-    font-weight: 800; /* ضخیم‌تر */
+    font-size: 2.2rem;
+    font-weight: 800;
     color: var(--primary-color);
     text-shadow: 1px 1px 2px var(--shadow-light);
 }
 
 nav ul {
-    display: none; /* منو را حذف کردیم تا لوگو تنها در مرکز باشد */
+    display: none;
 }
 
 /* Sections */
@@ -99,15 +99,57 @@ section h2 {
     gap: 2.5rem;
 }
 
+/* === START: GLOWING EFFECT CODE === */
+/* کدی که برای افکت نورانی اضافه شد */
+
+.glowing-card {
+  position: relative; /* برای کار کردن انیمیشن ضروری است */
+  overflow: hidden; /* بخش‌های اضافی انیمیشن را پنهان می‌کند */
+  z-index: 1;
+}
+
+.glowing-card::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250%; /* بزرگتر از کادر برای چرخش کامل */
+  height: 250%;
+  z-index: -1;
+  background: conic-gradient(
+    from 0deg,
+    #3498db, /* رنگ نورانی اول */
+    #9b59b6, /* رنگ نورانی دوم */
+    #3498db, /* تکرار برای چرخش یکنواخت */
+    transparent 40%
+  );
+  animation: rotate-glow 4s linear infinite; /* اجرای انیمیشن */
+  transform-origin: center center;
+}
+
+@keyframes rotate-glow {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* === END: GLOWING EFFECT CODE === */
+
+
 .product-card {
     background: var(--card-bg);
     border-radius: 12px;
-    /* افکت برجسته و سه‌بعدی */
     box-shadow: 0 8px 15px var(--shadow-light), 0 0 5px var(--shadow-light);
     padding: 1.5rem;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-top: 4px solid var(--secondary-color);
+    /* این دو خط پایین برای هماهنگی با افکت نورانی است */
+    position: relative; 
+    z-index: 2;
 }
 
 .product-card:hover {
