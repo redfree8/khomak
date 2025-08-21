@@ -1,101 +1,190 @@
-/* General Styles */
-:root {
-    --primary-color: #5f7285;   
-    --card-bg: #ffffff;        
-    --text-color: #34495e;     
-    --background-light: #f8f9fa; 
-    --background-dark: #e9ecef;  
-    --shadow-color: rgba(0, 0, 0, 0.08);
-    --strip-color: #e74c3c; /* رنگ نوار متحرک قرمز */
-}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فریبا خمک - محصولات ارگانیک</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* General Styles */
+        :root {
+            --primary-color: #5f7285;   
+            --card-bg: #ffffff;        
+            --text-color: #34495e;     
+            --background-light: #f8f9fa; 
+            --background-dark: #e9ecef;  
+            --shadow-color: rgba(0, 0, 0, 0.08);
+            --strip-color: #e74c3c; /* رنگ نوار متحرک قرمز */
+        }
 
-body {
-    font-family: 'Vazirmatn', sans-serif;
-    line-height: 1.7;
-    margin: 0;
-    padding: 0;
-    background-image: linear-gradient(to top, var(--background-dark) 0%, var(--background-light) 100%);
-    color: var(--text-color);
-    direction: rtl;
-}
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-image: linear-gradient(to top, var(--background-dark) 0%, var(--background-light) 100%);
+            color: var(--text-color);
+            direction: rtl;
+        }
 
-/* Header, Nav, Sections */
-header { background: var(--card-bg); padding: 1rem 0; box-shadow: 0 4px 10px var(--shadow-color); position: sticky; top: 0; z-index: 1000; }
-nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; align-items: center; padding: 0 2rem; }
-nav .logo { font-size: 2.2rem; font-weight: 800; color: var(--primary-color); text-shadow: 1px 1px 2px var(--shadow-color); }
-main { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-section { margin-bottom: 2rem; }
-section h2 { text-align: center; margin-bottom: 2.5rem; font-size: 2.8rem; font-weight: 700; color: var(--primary-color); text-shadow: 1px 1px 3px var(--shadow-color); }
-.hero { text-align: center; padding: 5rem 1rem; }
-.hero h1 { font-size: 3.2rem; font-weight: 800; }
-.product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
+        /* Header, Nav, Sections */
+        header { background: var(--card-bg); padding: 1rem 0; box-shadow: 0 4px 10px var(--shadow-color); position: sticky; top: 0; z-index: 1000; }
+        nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; align-items: center; padding: 0 2rem; }
+        nav .logo { font-size: 2.2rem; font-weight: 800; color: var(--primary-color); text-shadow: 1px 1px 2px var(--shadow-color); }
+        main { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        section { margin-bottom: 2rem; }
+        section h2 { text-align: center; margin-bottom: 2.5rem; font-size: 2.8rem; font-weight: 700; color: var(--primary-color); text-shadow: 1px 1px 3px var(--shadow-color); }
+        .hero { text-align: center; padding: 5rem 1rem; }
+        .hero h1 { font-size: 3.2rem; font-weight: 800; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
 
-/* === START: NEW MOVING STRIP EFFECT === */
-.strip-card {
-    position: relative;
-    background: var(--card-bg);
-    border-radius: 14px;
-    padding: 1.5rem;
-    text-align: center;
-    box-shadow: 0 8px 25px var(--shadow-color);
-}
+        /* === START: NEW MOVING STRIP EFFECT === */
+        .strip-card {
+            position: relative;
+            background: var(--card-bg);
+            border-radius: 14px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 8px 25px var(--shadow-color);
+        }
 
-#about.strip-card {
-     padding: 4rem 2rem;
-}
+        #about.strip-card {
+             padding: 4rem 2rem;
+        }
 
-.strip-border {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; 
-    overflow: visible; 
-}
+        .strip-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; 
+            overflow: visible; 
+        }
 
-.strip-border rect {
-    fill: transparent;
-    stroke: var(--strip-color);
-    stroke-width: 4px; 
-    stroke-dasharray: 0.15 0.85; 
-    stroke-dashoffset: 0.25; 
-    animation: strip-crawl 4s linear infinite;
-}
+        .strip-border rect {
+            fill: transparent;
+            stroke: var(--strip-color);
+            stroke-width: 4px; 
+            stroke-dasharray: 0.15 0.85; 
+            stroke-dashoffset: 0.25; 
+            animation: strip-crawl 4s linear infinite;
+        }
 
-@keyframes strip-crawl {
-    to {
-        stroke-dashoffset: -0.75; 
-    }
-}
-/* === END EFFECT === */
+        @keyframes strip-crawl {
+            to {
+                stroke-dashoffset: -0.75; 
+            }
+        }
+        /* === END EFFECT === */
 
-.product-card:hover {
-    transform: translateY(-10px);
-}
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
 
-.product-card img {
-    max-width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
-    border: 1px solid var(--background-dark);
-}
+        .product-card img {
+            max-width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--background-dark);
+        }
 
-.product-card h3 {
-    margin-bottom: 0.5rem;
-    color: var(--primary-color);
-    font-size: 1.4rem;
-    font-weight: 700;
-}
+        .product-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
 
-/* Footer, Buttons, etc. */
-.btn { display: inline-block; color: #fff; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: all 0.3s ease; border: none; background: var(--primary-color); }
-.btn:hover { background: var(--text-color); transform: translateY(-2px); }
-#contact { text-align: center; }
-footer { background: var(--primary-color); color: var(--background-light); text-align: center; padding: 2rem 0; margin-top: 2rem; }
-.designer-credit { font-size: 0.9rem; color: #ccc; margin-top: -10px; margin-bottom: 15px; }
-footer .admin-link { color: #aaa; text-decoration: none; font-size: 0.9rem; margin-top: 10px; display: block; }
-footer .admin-link:hover { color: #fff; }
-@media (max-width: 768px) { .hero h1 { font-size: 2.4rem; } section h2 { font-size: 2.2rem; } nav .logo { font-size: 1.8rem; } }
+        /* Footer, Buttons, etc. */
+        .btn { display: inline-block; color: #fff; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: all 0.3s ease; border: none; background: var(--primary-color); }
+        .btn:hover { background: var(--text-color); transform: translateY(-2px); }
+        #contact { text-align: center; }
+        footer { background: var(--primary-color); color: var(--background-light); text-align: center; padding: 2rem 0; margin-top: 2rem; }
+        .designer-credit { font-size: 0.9rem; color: #ccc; margin-top: -10px; margin-bottom: 15px; }
+        footer .admin-link { color: #aaa; text-decoration: none; font-size: 0.9rem; margin-top: 10px; display: block; }
+        footer .admin-link:hover { color: #fff; }
+        @media (max-width: 768px) { .hero h1 { font-size: 2.4rem; } section h2 { font-size: 2.2rem; } nav .logo { font-size: 1.8rem; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">فریبا خمک</div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>فروش محصولات ارگانیک و مشاوره تخصصی</h1>
+            <p>مورد تأیید سازمان غذا و دارو - فوراور آمریکا</p>
+            <a href="#products" class="btn">مشاهده محصولات</a>
+        </section>
+
+        <section id="about" class="strip-card">
+            <h2>درباره ما</h2>
+            <p>فریبا خمک، مشاور تخصصی انواع بیماری‌های پوست و مو. ما با ارائه محصولات ارگانیک و با کیفیت، به سلامت و زیبایی شما اهمیت می‌دهیم.</p>
+            <svg class="strip-border" width="100%" height="100%">
+                <rect pathLength="1" rx="14" ry="14" width="100%" height="100%"/>
+            </svg>
+        </section>
+
+        <section id="products">
+            <h2>محصولات ما</h2>
+            <div class="product-grid">
+
+                <div class="strip-card product-card">
+                    <img src="images/wellwoman.jpg" alt="Wellwoman Gummies">
+                    <h3>Wellwoman Gummies</h3>
+                    <p>مکمل غذایی مخصوص بانوان برای تقویت سیستم ایمنی و انرژی.</p>
+                    <svg class="strip-border" width="100%" height="100%">
+                        <rect pathLength="1" rx="14" ry="14" width="100%" height="100%"/>
+                    </svg>
+                </div>
+
+                <div class="strip-card product-card">
+                    <img src="images/collagen.jpg" alt="Collagen Science">
+                    <h3>Collagen Science</h3>
+                    <p>مکمل کلاژن برای جوانسازی پوست و تقویت مفاصل.</p>
+                    <svg class="strip-border" width="100%" height="100%">
+                        <rect pathLength="1" rx="14" ry="14" width="100%" height="100%"/>
+                    </svg>
+                </div>
+
+                <div class="strip-card product-card">
+                    <img src="images/priorin.jpg" alt="Priorin">
+                    <h3>Priorin</h3>
+                    <p>راهکاری موثر برای جلوگیری از ریزش مو و تقویت ریشه مو.</p>
+                    <svg class="strip-border" width="100%" height="100%">
+                        <rect pathLength="1" rx="14" ry="14" width="100%" height="100%"/>
+                    </svg>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>ارتباط با ما</h2>
+            <p>برای مشاوره و سفارش محصولات، از طریق اینستاگرام با ما در ارتباط باشید.</p>
+            <a href="https://zil.ink/faribakhomakkordestan" target="_blank" class="btn">برای ارتباط با ما کلیک کنید</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; ۲۰۲۵ تمام حقوق برای فریباخمک محفوظ است.</p>
+        <p class="designer-credit">طراح سایت: پوریا عبدالله نژاد</p>
+        <a href="admin.html" class="admin-link">ورود مدیر</a>
+    </footer>
+
+    <audio id="background-music" loop>
+        <source src="https://cdn.pixabay.com/audio/2022/11/17/audio_85d21e361c.mp3" type="audio/mpeg">
+        مرورگر شما از پخش صدا پشتیبانی نمی‌کند.
+    </audio>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
