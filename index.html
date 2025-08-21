@@ -39,6 +39,19 @@
         .hero h1 { font-size: 3.2rem; font-weight: 800; }
         .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
 
+        /* === START: PROFILE PICTURE STYLE === */
+        /* استایل جدید برای عکس مالک سایت */
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%; /* گرد کردن عکس */
+            object-fit: cover;   /* برای جلوگیری از دفرمه شدن عکس */
+            margin-bottom: 1.5rem;
+            border: 5px solid var(--card-bg);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        /* === END: PROFILE PICTURE STYLE === */
+
         /* === START: NEW MOVING STRIP EFFECT === */
         .strip-card {
             position: relative;
@@ -120,6 +133,8 @@
 
     <main>
         <section class="hero">
+            <img src="images/owner-photo.jpg" alt="عکس فریبا خمک" class="profile-picture">
+
             <h1>فروش محصولات ارگانیک و مشاوره تخصصی</h1>
             <p>مورد تأیید سازمان غذا و دارو - فوراور آمریکا</p>
             <a href="#products" class="btn">مشاهده محصولات</a>
