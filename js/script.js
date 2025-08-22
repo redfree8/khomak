@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
 
+    // START: FIX SCROLL PROBLEM
+    // این کد صفحه را مجبور می‌کند که همیشه از بالا شروع شود
+    window.scrollTo(0, 0);
+    // END: FIX SCROLL PROBLEM
+
+
     // --- بخش ۱: کد مربوط به رمز عبور صفحه ادمین ---
     if (window.location.pathname.endsWith("admin.html")) {
         
