@@ -42,7 +42,7 @@
         /* Profile Picture Style */
         .profile-picture { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1.5rem; border: 5px solid var(--card-bg); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
 
-        /* Moving Strip Effect */
+        /* Moving Strip Effect (Original) */
         .strip-card { position: relative; background: var(--card-bg); border-radius: 14px; padding: 1.5rem; text-align: center; box-shadow: 0 8px 25px var(--shadow-color); }
         #about.strip-card { padding: 4rem 2rem; }
         .strip-border { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
@@ -55,7 +55,7 @@
         .product-card h3 { margin-bottom: 0.5rem; color: var(--primary-color); font-size: 1.4rem; font-weight: 700; }
 
         /* General UI Elements */
-        .btn { display: inline-block; color: #fff; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: all 0.3s ease; border: none; background: var(--primary-color); cursor: pointer; }
+        .btn { display: inline-block; color: #fff; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: all 0.3s ease; border: none; background: var(--primary-color); cursor: pointer; position: relative; /* برای انیمیشن جدید */ }
         .btn:hover { background: var(--text-color); transform: translateY(-2px); }
         #contact { text-align: center; }
         footer { background: var(--primary-color); color: var(--background-light); text-align: center; padding: 2rem 0; margin-top: 2rem; }
@@ -67,7 +67,7 @@
         /* Contact Section Styles */
         #direct-contact .contact-box-glow { background: var(--card-bg); padding: 2rem; border-radius: 14px; text-align: center; margin-top: 3rem; box-shadow: 0 0 25px 4px rgba(231, 76, 60, 0.4); }
         #direct-contact h2 { margin-top: 0; margin-bottom: 2rem; font-size: 2.2rem; }
-        .contact-card { background: var(--background-light); border: 1px solid var(--background-dark); padding: 1.5rem 1rem; border-radius: 12px; margin-bottom: 1.5rem; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); }
+        .contact-card { position: relative; /* برای انیمیشن جدید */ background: var(--background-light); border: 1px solid var(--background-dark); padding: 1.5rem 1rem; border-radius: 12px; margin-bottom: 1.5rem; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); }
         .contact-card p { margin: 0 0 0.75rem 0; font-size: 1rem; color: var(--text-color); }
         .phone-link { display: block; font-size: 1.6rem; font-weight: 700; color: var(--primary-color); text-decoration: none; white-space: nowrap; transition: letter-spacing 0.3s ease; }
         .phone-link:hover { letter-spacing: 1px; }
@@ -77,44 +77,48 @@
         .telegram-btn { background-color: #0088cc; box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3); }
         .telegram-btn:hover { background-color: #005f99; }
 
-        /* === START: NEW IRAN FLAG BORDER ANIMATION === */
-        @keyframes spin-border {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        /* === START: SVG SNAKE BORDER ANIMATION (CORRECTED) === */
+        @keyframes iran-crawl {
+            to { stroke-dashoffset: -1; }
         }
 
-        .animated-iran-border {
-            position: relative;
-            z-index: 1; 
-        }
-
-        .animated-iran-border::before {
-            content: '';
+        .iran-flag-border {
             position: absolute;
-            /* ضخامت نوار را با این اعداد کنترل کنید (مثلا -3px) */
-            top: -4px; right: -4px; bottom: -4px; left: -4px; 
-            background: conic-gradient(
-                from 180deg, 
-                #DA0000, /* Red */
-                #FFFFFF, /* White */
-                #239F40, /* Green */
-                #DA0000  /* Loop back to Red */
-            );
-            border-radius: inherit; /* گردی گوشه‌ها را از کادر اصلی می‌گیرد */
-            animation: spin-border 4s linear infinite;
-            z-index: -1; /* این لایه را پشت محتوای اصلی قرار می‌دهد */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
         }
-        /* === END: NEW IRAN FLAG BORDER ANIMATION === */
+
+        .iran-flag-border rect {
+            fill: transparent;
+            stroke-width: 4px; /* ضخامت خطوط */
+            /* یک قطعه کوتاه و یک فاصله بلند برای ایجاد حالت ماری شکل */
+            stroke-dasharray: 0.08 0.92; 
+            animation: iran-crawl 3s linear infinite;
+        }
+
+        /* تعریف رنگ و تاخیر در انیمیشن برای هر خط */
+        .iran-flag-border .iran-green {
+            stroke: #239F40; /* سبز */
+            animation-delay: 0s;
+        }
+        .iran-flag-border .iran-white {
+            stroke: #FFFFFF; /* سفید */
+            animation-delay: -1s; /* شروع از یک سوم مسیر */
+        }
+        .iran-flag-border .iran-red {
+            stroke: #DA0000;  /* قرمز */
+            animation-delay: -2s; /* شروع از دو سوم مسیر */
+        }
+        /* === END: SVG SNAKE BORDER ANIMATION (CORRECTED) === */
     </style>
 </head>
 <body>
-
     <header>
-        <nav>
-            <div class="logo">فریبا خمک</div>
-        </nav>
+        <nav><div class="logo">فریبا خمک</div></nav>
     </header>
-
     <main>
         <section class="hero">
             <img src="images/IMG_6302.jpeg" alt="عکس فریبا خمک" class="profile-picture">
@@ -122,13 +126,11 @@
             <p>مورد تأیید سازمان غذا و دارو - فوراور آمریکا</p>
             <a href="#products" class="btn">مشاهده محصولات</a>
         </section>
-
         <section id="about" class="strip-card">
             <h2>درباره ما</h2>
             <p>فریبا خمک، مشاور تخصصی انواع بیماری‌های پوست و مو. ما با ارائه محصولات ارگانیک و با کیفیت، به سلامت و زیبایی شما اهمیت می‌دهیم.</p>
             <svg class="strip-border" width="100%" height="100%"><rect pathLength="1" rx="14" ry="14" width="100%" height="100%"/></svg>
         </section>
-
         <section id="products">
             <h2>محصولات ما</h2>
             <div class="product-grid">
@@ -137,46 +139,62 @@
                 <div class="strip-card product-card"><img src="images/IMG_6305.jpeg" alt="Priorin"><h3>Priorin</h3><p>راهکاری موثر برای جلوگیری از ریزش مو و تقویت ریشه مو.</p><svg class="strip-border" width="100%" height="100%"><rect pathLength="1" rx="14" ry="14" width="100%" height="100%"/></svg></div>
             </div>
         </section>
-
         <section id="contact">
             <h2>ارتباط با ما</h2>
             <p>برای مشاوره و سفارش محصولات، از طریق اینستاگرام با ما در ارتباط باشید.</p>
             <a href="https://zil.ink/faribakhomakkordestan" target="_blank" class="btn">برای ارتباط با ما کلیک کنید</a>
         </section>
-
         <section id="direct-contact">
             <div class="contact-box-glow">
                 <h2>ارتباط مستقیم با من</h2>
-
-                <div class="contact-card animated-iran-border">
+                <div class="contact-card">
                     <p>شماره تماس اول:</p>
                     <a class="phone-link" href="tel:+989191789829">0919-178-9829</a>
+                    <svg class="iran-flag-border" width="100%" height="100%">
+                        <rect class="iran-green" pathLength="1" rx="12" ry="12" width="100%" height="100%"/>
+                        <rect class="iran-white" pathLength="1" rx="12" ry="12" width="100%" height="100%"/>
+                        <rect class="iran-red" pathLength="1" rx="12" ry="12" width="100%" height="100%"/>
+                    </svg>
                 </div>
-
-                <div class="contact-card animated-iran-border">
+                <div class="contact-card">
                     <p>شماره تماس دوم:</p>
                     <a class="phone-link" href="tel:+989107783013">0910-778-3013</a>
+                    <svg class="iran-flag-border" width="100%" height="100%">
+                        <rect class="iran-green" pathLength="1" rx="12" ry="12" width="100%" height="100%"/>
+                        <rect class="iran-white" pathLength="1" rx="12" ry="12" width="100%" height="100%"/>
+                        <rect class="iran-red" pathLength="1" rx="12" ry="12" width="100%" height="100%"/>
+                    </svg>
                 </div>
-
                 <div class="social-links">
-                    <a href="https://api.whatsapp.com/send?phone=989191789829&text=سلام، برای مشاوره و سفارش محصول پیام میدهم." target="_blank" class="btn whatsapp-btn animated-iran-border">گفتگو در واتساپ</a>
-                    <a href="https://t.me/Fkhomak" target="_blank" class="btn telegram-btn animated-iran-border">گفتگو در تلگرام</a>
+                    <a href="https://api.whatsapp.com/send?phone=989191789829&text=سلام، برای مشاوره و سفارش محصول پیام میدهم." target="_blank" class="btn whatsapp-btn">
+                        گفتگو در واتساپ
+                        <svg class="iran-flag-border" width="100%" height="100%">
+                            <rect class="iran-green" pathLength="1" rx="8" ry="8" width="100%" height="100%"/>
+                            <rect class="iran-white" pathLength="1" rx="8" ry="8" width="100%" height="100%"/>
+                            <rect class="iran-red" pathLength="1" rx="8" ry="8" width="100%" height="100%"/>
+                        </svg>
+                    </a>
+                    <a href="https://t.me/Fkhomak" target="_blank" class="btn telegram-btn">
+                        گفتگو در تلگرام
+                        <svg class="iran-flag-border" width="100%" height="100%">
+                            <rect class="iran-green" pathLength="1" rx="8" ry="8" width="100%" height="100%"/>
+                            <rect class="iran-white" pathLength="1" rx="8" ry="8" width="100%" height="100%"/>
+                            <rect class="iran-red" pathLength="1" rx="8" ry="8" width="100%" height="100%"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </section>
     </main>
-
     <footer>
         <p>&copy; ۲۰۲۵ تمام حقوق برای فریباخمک محفوظ است.</p>
         <p class="designer-credit">طراح سایت: پوریا عبدالله نژاد</p>
         <a href="admin.html" class="admin-link">ورود مدیر</a>
     </footer>
-
     <audio id="background-music" loop>
         <source src="https://cdn.pixabay.com/audio/2022/11/17/audio_85d21e361c.mp3" type="audio/mpeg">
         مرورگر شما از پخش صدا پشتیبانی نمی‌کند.
     </audio>
-
     <script src="js/script.js"></script>
 </body>
 </html>
