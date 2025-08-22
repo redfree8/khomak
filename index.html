@@ -39,7 +39,7 @@
         .hero h1 { font-size: 3.2rem; font-weight: 800; }
         .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
 
-        /* === START: PROFILE PICTURE STYLE === */
+        /* Profile Picture Style */
         .profile-picture {
             width: 150px;
             height: 150px;
@@ -49,9 +49,8 @@
             border: 5px solid var(--card-bg);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
-        /* === END: PROFILE PICTURE STYLE === */
 
-        /* === START: NEW MOVING STRIP EFFECT === */
+        /* Moving Strip Effect */
         .strip-card {
             position: relative;
             background: var(--card-bg);
@@ -60,58 +59,17 @@
             text-align: center;
             box-shadow: 0 8px 25px var(--shadow-color);
         }
+        #about.strip-card { padding: 4rem 2rem; }
+        .strip-border { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+        .strip-border rect { fill: transparent; stroke: var(--strip-color); stroke-width: 4px; stroke-dasharray: 0.15 0.85; stroke-dashoffset: 0.25; animation: strip-crawl 4s linear infinite; }
+        @keyframes strip-crawl { to { stroke-dashoffset: -0.75; } }
 
-        #about.strip-card {
-             padding: 4rem 2rem;
-        }
+        /* Product Card Styles */
+        .product-card:hover { transform: translateY(-10px); }
+        .product-card img { max-width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1.5rem; border: 1px solid var(--background-dark); }
+        .product-card h3 { margin-bottom: 0.5rem; color: var(--primary-color); font-size: 1.4rem; font-weight: 700; }
 
-        .strip-border {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none; 
-            overflow: visible; 
-        }
-
-        .strip-border rect {
-            fill: transparent;
-            stroke: var(--strip-color);
-            stroke-width: 4px; 
-            stroke-dasharray: 0.15 0.85; 
-            stroke-dashoffset: 0.25; 
-            animation: strip-crawl 4s linear infinite;
-        }
-
-        @keyframes strip-crawl {
-            to {
-                stroke-dashoffset: -0.75; 
-            }
-        }
-        /* === END EFFECT === */
-
-        .product-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .product-card img {
-            max-width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            border: 1px solid var(--background-dark);
-        }
-
-        .product-card h3 {
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
-            font-size: 1.4rem;
-            font-weight: 700;
-        }
-
-        /* Footer, Buttons, etc. */
+        /* General UI Elements */
         .btn { display: inline-block; color: #fff; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: all 0.3s ease; border: none; background: var(--primary-color); cursor: pointer; }
         .btn:hover { background: var(--text-color); transform: translateY(-2px); }
         #contact { text-align: center; }
@@ -121,48 +79,52 @@
         footer .admin-link:hover { color: #fff; }
         @media (max-width: 768px) { .hero h1 { font-size: 2.4rem; } section h2 { font-size: 2.2rem; } nav .logo { font-size: 1.8rem; } }
 
-        /* === START: NEW CONTACT SECTION STYLES === */
+        /* === START: REVISED CONTACT SECTION STYLES === */
         #direct-contact .contact-box-glow {
             background: var(--card-bg);
-            padding: 2.5rem;
+            padding: 2rem;
             border-radius: 14px;
             text-align: center;
             margin-top: 3rem;
             /* افکت نور قرمز ملایم */
             box-shadow: 0 0 25px 4px rgba(231, 76, 60, 0.4); 
-            transition: box-shadow 0.3s ease-in-out;
-        }
-
-        #direct-contact .contact-box-glow:hover {
-            box-shadow: 0 0 35px 8px rgba(231, 76, 60, 0.55); 
         }
 
         #direct-contact h2 {
+            margin-top: 0;
             margin-bottom: 2rem;
             font-size: 2.2rem;
         }
 
-        .phone-numbers {
-            margin-bottom: 2.5rem;
+        /* استایل جدید برای کارت‌های جداگانه */
+        .contact-card {
             background: var(--background-light);
-            padding: 1.5rem;
-            border-radius: 10px;
             border: 1px solid var(--background-dark);
+            padding: 1.5rem 1rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
         }
 
-        .phone-numbers p {
-            margin-top: 0;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
-
-        .phone-numbers span {
-            font-size: 1.5rem;
-            font-weight: 700;
+        .contact-card p {
+            margin: 0 0 0.75rem 0;
+            font-size: 1rem;
             color: var(--text-color);
-            margin: 0.5rem 1rem;
-            display: inline-block;
+        }
+
+        /* استایل لینک شماره تلفن */
+        .phone-link {
+            display: block;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            white-space: nowrap; /* این کد مانع شکستن شماره در چند خط می‌شود */
+            transition: letter-spacing 0.3s ease;
+        }
+
+        .phone-link:hover {
+            letter-spacing: 1px; /* افکت جزئی برای زیبایی */
         }
 
         .social-links {
@@ -170,6 +132,7 @@
             justify-content: center;
             gap: 1.5rem;
             flex-wrap: wrap; 
+            margin-top: 2.5rem; /* فاصله از کارت‌های شماره */
         }
 
         .whatsapp-btn {
@@ -189,8 +152,7 @@
         .telegram-btn:hover {
             background-color: #005f99;
         }
-        /* === END: NEW CONTACT SECTION STYLES === */
-
+        /* === END: REVISED CONTACT SECTION STYLES === */
     </style>
 </head>
 <body>
@@ -261,13 +223,19 @@
         <section id="direct-contact">
             <div class="contact-box-glow">
                 <h2>تماس مستقیم و شبکه‌های اجتماعی</h2>
-                <div class="phone-numbers">
-                    <p>شماره‌های تماس برای مشاوره و سفارش:</p>
-                    <span>0919-178-9829</span>
-                    <span>0910-778-3013</span>
+
+                <div class="contact-card">
+                    <p>شماره تماس اول:</p>
+                    <a class="phone-link" href="tel:+989191789829">0919-178-9829</a>
                 </div>
+
+                <div class="contact-card">
+                    <p>شماره تماس دوم:</p>
+                    <a class="phone-link" href="tel:+989107783013">0910-778-3013</a>
+                </div>
+
                 <div class="social-links">
-                    <a href="https://api.whatsapp.com/send?phone=989191789829&text=" target="_blank" class="btn whatsapp-btn">گفتگو در واتساپ</a>
+                    <a href="https://api.whatsapp.com/send?phone=989191789829&text=سلام، برای مشاوره و سفارش محصول پیام میدهم." target="_blank" class="btn whatsapp-btn">گفتگو در واتساپ</a>
                     <a href="https://t.me/Fkhomak" target="_blank" class="btn telegram-btn">عضویت در کانال تلگرام</a>
                 </div>
             </div>
