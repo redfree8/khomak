@@ -40,12 +40,11 @@
         .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
 
         /* === START: PROFILE PICTURE STYLE === */
-        /* استایل جدید برای عکس مالک سایت */
         .profile-picture {
             width: 150px;
             height: 150px;
-            border-radius: 50%; /* گرد کردن عکس */
-            object-fit: cover;   /* برای جلوگیری از دفرمه شدن عکس */
+            border-radius: 50%;
+            object-fit: cover;
             margin-bottom: 1.5rem;
             border: 5px solid var(--card-bg);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -113,7 +112,7 @@
         }
 
         /* Footer, Buttons, etc. */
-        .btn { display: inline-block; color: #fff; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: all 0.3s ease; border: none; background: var(--primary-color); }
+        .btn { display: inline-block; color: #fff; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: all 0.3s ease; border: none; background: var(--primary-color); cursor: pointer; }
         .btn:hover { background: var(--text-color); transform: translateY(-2px); }
         #contact { text-align: center; }
         footer { background: var(--primary-color); color: var(--background-light); text-align: center; padding: 2rem 0; margin-top: 2rem; }
@@ -121,6 +120,77 @@
         footer .admin-link { color: #aaa; text-decoration: none; font-size: 0.9rem; margin-top: 10px; display: block; }
         footer .admin-link:hover { color: #fff; }
         @media (max-width: 768px) { .hero h1 { font-size: 2.4rem; } section h2 { font-size: 2.2rem; } nav .logo { font-size: 1.8rem; } }
+
+        /* === START: NEW CONTACT SECTION STYLES === */
+        #direct-contact .contact-box-glow {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 14px;
+            text-align: center;
+            margin-top: 3rem;
+            /* افکت نور قرمز ملایم */
+            box-shadow: 0 0 25px 4px rgba(231, 76, 60, 0.4); 
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        #direct-contact .contact-box-glow:hover {
+            box-shadow: 0 0 35px 8px rgba(231, 76, 60, 0.55); 
+        }
+
+        #direct-contact h2 {
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+        }
+
+        .phone-numbers {
+            margin-bottom: 2.5rem;
+            background: var(--background-light);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid var(--background-dark);
+        }
+
+        .phone-numbers p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .phone-numbers span {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin: 0.5rem 1rem;
+            display: inline-block;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap; 
+        }
+
+        .whatsapp-btn {
+            background-color: #25D366; /* رنگ سبز واتساپ */
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+        }
+
+        .telegram-btn {
+            background-color: #0088cc; /* رنگ آبی تلگرام */
+            box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
+        }
+
+        .telegram-btn:hover {
+            background-color: #005f99;
+        }
+        /* === END: NEW CONTACT SECTION STYLES === */
+
     </style>
 </head>
 <body>
@@ -187,7 +257,22 @@
             <p>برای مشاوره و سفارش محصولات، از طریق اینستاگرام با ما در ارتباط باشید.</p>
             <a href="https://zil.ink/faribakhomakkordestan" target="_blank" class="btn">برای ارتباط با ما کلیک کنید</a>
         </section>
-    </main>
+
+        <section id="direct-contact">
+            <div class="contact-box-glow">
+                <h2>تماس مستقیم و شبکه‌های اجتماعی</h2>
+                <div class="phone-numbers">
+                    <p>شماره‌های تماس برای مشاوره و سفارش:</p>
+                    <span>0919-178-9829</span>
+                    <span>0910-778-3013</span>
+                </div>
+                <div class="social-links">
+                    <a href="https://api.whatsapp.com/send?phone=989191789829&text=" target="_blank" class="btn whatsapp-btn">گفتگو در واتساپ</a>
+                    <a href="https://t.me/Fkhomak" target="_blank" class="btn telegram-btn">عضویت در کانال تلگرام</a>
+                </div>
+            </div>
+        </section>
+        </main>
 
     <footer>
         <p>&copy; ۲۰۲۵ تمام حقوق برای فریباخمک محفوظ است.</p>
