@@ -55,9 +55,8 @@
         .product-card h3 { margin-bottom: 0.5rem; color: var(--primary-color); font-size: 1.4rem; font-weight: 700; }
 
         /* General UI Elements */
-        .btn { display: inline-block; color: #fff; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: all 0.3s ease; border: none; background: var(--primary-color); cursor: pointer; position: relative; /* برای انیمیشن جدید */ }
+        .btn { display: inline-block; color: #fff; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: all 0.3s ease; border: none; background: var(--primary-color); cursor: pointer; position: relative; }
         .btn:hover { background: var(--text-color); transform: translateY(-2px); }
-        #contact { text-align: center; }
         footer { background: var(--primary-color); color: var(--background-light); text-align: center; padding: 2rem 0; margin-top: 2rem; }
         .designer-credit { font-size: 0.9rem; color: #ccc; margin-top: -10px; margin-bottom: 15px; }
         footer .admin-link { color: #aaa; text-decoration: none; font-size: 0.9rem; margin-top: 10px; display: block; }
@@ -67,52 +66,36 @@
         /* Contact Section Styles */
         #direct-contact .contact-box-glow { background: var(--card-bg); padding: 2rem; border-radius: 14px; text-align: center; margin-top: 3rem; box-shadow: 0 0 25px 4px rgba(231, 76, 60, 0.4); }
         #direct-contact h2 { margin-top: 0; margin-bottom: 2rem; font-size: 2.2rem; }
-        .contact-card { position: relative; /* برای انیمیشن جدید */ background: var(--background-light); border: 1px solid var(--background-dark); padding: 1.5rem 1rem; border-radius: 12px; margin-bottom: 1.5rem; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); }
+        .contact-card { position: relative; background: var(--background-light); border: 1px solid var(--background-dark); padding: 1.5rem 1rem; border-radius: 12px; margin-bottom: 1.5rem; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); }
         .contact-card p { margin: 0 0 0.75rem 0; font-size: 1rem; color: var(--text-color); }
         .phone-link { display: block; font-size: 1.6rem; font-weight: 700; color: var(--primary-color); text-decoration: none; white-space: nowrap; transition: letter-spacing 0.3s ease; }
         .phone-link:hover { letter-spacing: 1px; }
         .social-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 2.5rem; }
+        
         .whatsapp-btn { background-color: #25D366; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
         .whatsapp-btn:hover { background-color: #128C7E; }
+        
         .telegram-btn { background-color: #0088cc; box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3); }
         .telegram-btn:hover { background-color: #005f99; }
 
-        /* === START: SVG SNAKE BORDER ANIMATION (CORRECTED) === */
+        /* استایل دکمه اینستاگرام */
+        .instagram-btn {
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+            box-shadow: 0 4px 15px rgba(214, 36, 159, 0.4);
+        }
+        .instagram-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* SVG Snake Border Animation */
         @keyframes iran-crawl {
             to { stroke-dashoffset: -1; }
         }
-
-        .iran-flag-border {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
-        .iran-flag-border rect {
-            fill: transparent;
-            stroke-width: 4px; /* ضخامت خطوط */
-            /* یک قطعه کوتاه و یک فاصله بلند برای ایجاد حالت ماری شکل */
-            stroke-dasharray: 0.08 0.92; 
-            animation: iran-crawl 3s linear infinite;
-        }
-
-        /* تعریف رنگ و تاخیر در انیمیشن برای هر خط */
-        .iran-flag-border .iran-green {
-            stroke: #239F40; /* سبز */
-            animation-delay: 0s;
-        }
-        .iran-flag-border .iran-white {
-            stroke: #FFFFFF; /* سفید */
-            animation-delay: -1s; /* شروع از یک سوم مسیر */
-        }
-        .iran-flag-border .iran-red {
-            stroke: #DA0000;  /* قرمز */
-            animation-delay: -2s; /* شروع از دو سوم مسیر */
-        }
-        /* === END: SVG SNAKE BORDER ANIMATION (CORRECTED) === */
+        .iran-flag-border { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+        .iran-flag-border rect { fill: transparent; stroke-width: 4px; stroke-dasharray: 0.08 0.92; animation: iran-crawl 3s linear infinite; }
+        .iran-flag-border .iran-green { stroke: #239F40; animation-delay: 0s; }
+        .iran-flag-border .iran-white { stroke: #FFFFFF; animation-delay: -1s; }
+        .iran-flag-border .iran-red { stroke: #DA0000; animation-delay: -2s; }
     </style>
 </head>
 <body>
@@ -139,14 +122,10 @@
                 <div class="strip-card product-card"><img src="images/IMG_6305.jpeg" alt="Priorin"><h3>Priorin</h3><p>راهکاری موثر برای جلوگیری از ریزش مو و تقویت ریشه مو.</p><svg class="strip-border" width="100%" height="100%"><rect pathLength="1" rx="14" ry="14" width="100%" height="100%"/></svg></div>
             </div>
         </section>
-        <section id="contact">
-            <h2>ارتباط با ما</h2>
-            <p>برای مشاوره و سفارش محصولات، از طریق اینستاگرام با ما در ارتباط باشید.</p>
-            <a href="https://zil.ink/faribakhomakkordestan" target="_blank" class="btn">برای ارتباط با ما کلیک کنید</a>
-        </section>
+        
         <section id="direct-contact">
             <div class="contact-box-glow">
-                <h2>ارتباط مستقیم با من</h2>
+                <h2>ارتباط مستقیم</h2>
                 <div class="contact-card">
                     <p>شماره تماس اول:</p>
                     <a class="phone-link" href="tel:+989191789829">0919-178-9829</a>
@@ -176,6 +155,14 @@
                     </a>
                     <a href="https://t.me/Fkhomak" target="_blank" class="btn telegram-btn">
                         گفتگو در تلگرام
+                        <svg class="iran-flag-border" width="100%" height="100%">
+                            <rect class="iran-green" pathLength="1" rx="8" ry="8" width="100%" height="100%"/>
+                            <rect class="iran-white" pathLength="1" rx="8" ry="8" width="100%" height="100%"/>
+                            <rect class="iran-red" pathLength="1" rx="8" ry="8" width="100%" height="100%"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/faribakordestan?igsh=MWE2bHB5enhsd2VweA==" target="_blank" class="btn instagram-btn">
+                        پیج اینستاگرام
                         <svg class="iran-flag-border" width="100%" height="100%">
                             <rect class="iran-green" pathLength="1" rx="8" ry="8" width="100%" height="100%"/>
                             <rect class="iran-white" pathLength="1" rx="8" ry="8" width="100%" height="100%"/>
