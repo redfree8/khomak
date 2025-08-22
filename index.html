@@ -31,29 +31,32 @@
         /* Header, Nav, Sections */
         header { background: var(--card-bg); padding: 1rem 0; box-shadow: 0 4px 10px var(--shadow-color); position: sticky; top: 0; z-index: 1000; }
         nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; align-items: center; padding: 0 2rem; }
-        /* CHANGE: Logo size increased significantly */
         nav .logo { font-size: 4rem; font-weight: 800; color: var(--primary-color); text-shadow: 1px 1px 2px var(--shadow-color); }
         main { max-width: 1200px; margin: 0 auto; padding: 2rem; }
         section { margin-bottom: 2rem; }
         section h2 { text-align: center; margin-bottom: 2.5rem; font-size: 2.8rem; font-weight: 700; color: var(--primary-color); text-shadow: 1px 1px 3px var(--shadow-color); }
         
-        /* CHANGE: Hero section padding and spacing minimized */
-        .hero { text-align: center; padding: 1.5rem 1rem; }
+        /* CHANGE: Hero section padding minimized for extreme compactness */
+        .hero { 
+            text-align: center; 
+            padding: 0 1rem 1.5rem 1rem; /* Top padding removed */
+        }
         .hero h1 { 
             font-size: 3.2rem; 
             font-weight: 800; 
-            line-height: 1.5; /* Adjusted for new layout */
-            margin-bottom: 0.75rem; /* Reduced space below h1 */
+            line-height: 1.5; 
+            margin-bottom: 0.75rem; 
         }
         .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
 
-        /* CHANGE: Profile Picture margin reduced */
+        /* CHANGE: Profile Picture margins adjusted to stick to elements */
         .profile-picture { 
             width: 170px; 
             height: 170px; 
             border-radius: 50%; 
             object-fit: cover; 
-            margin-bottom: 0.5rem; /* Space below picture minimized */
+            margin-top: 1rem; /* Space from header */
+            margin-bottom: 0.2rem; /* Space to h1 minimized */
             border: 4px solid var(--card-bg); 
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12), inset 0 1px 3px rgba(255, 255, 255, 0.6);
         }
@@ -84,7 +87,6 @@
         @media (max-width: 768px) { 
             .hero h1 { font-size: 2.1rem; } 
             section h2 { font-size: 2.2rem; } 
-            /* CHANGE: Logo size increased significantly for mobile */
             nav .logo { font-size: 3.2rem; } 
         }
 
