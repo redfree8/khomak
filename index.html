@@ -31,23 +31,37 @@
         /* Header, Nav, Sections */
         header { background: var(--card-bg); padding: 1rem 0; box-shadow: 0 4px 10px var(--shadow-color); position: sticky; top: 0; z-index: 1000; }
         nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; align-items: center; padding: 0 2rem; }
-        nav .logo { font-size: 2.2rem; font-weight: 800; color: var(--primary-color); text-shadow: 1px 1px 2px var(--shadow-color); }
+        /* CHANGE: Logo size increased */
+        nav .logo { font-size: 2.6rem; font-weight: 800; color: var(--primary-color); text-shadow: 1px 1px 2px var(--shadow-color); }
         main { max-width: 1200px; margin: 0 auto; padding: 2rem; }
         section { margin-bottom: 2rem; }
         section h2 { text-align: center; margin-bottom: 2.5rem; font-size: 2.8rem; font-weight: 700; color: var(--primary-color); text-shadow: 1px 1px 3px var(--shadow-color); }
-        .hero { text-align: center; padding: 5rem 1rem; }
-        .hero h1 { font-size: 3.2rem; font-weight: 800; }
+        
+        /* CHANGE: Hero section padding reduced */
+        .hero { text-align: center; padding: 3.5rem 1rem; }
+        /* CHANGE: H1 line-height adjusted for new layout */
+        .hero h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.4; }
         .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
 
-        /* Profile Picture Style */
-        .profile-picture { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1.5rem; border: 5px solid var(--card-bg); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
+        /* CHANGE: Profile Picture size increased */
+        .profile-picture { width: 170px; height: 170px; border-radius: 50%; object-fit: cover; margin-bottom: 1.5rem; border: 5px solid var(--card-bg); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
 
         /* Moving Strip Effect (Original) */
         .strip-card { position: relative; background: var(--card-bg); border-radius: 14px; padding: 1.5rem; text-align: center; box-shadow: 0 8px 25px var(--shadow-color); }
-        #about.strip-card { padding: 4rem 2rem; }
+        /* CHANGE: About section padding reduced */
+        #about.strip-card { padding: 2.5rem 2rem; }
         .strip-border { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
         .strip-border rect { fill: transparent; stroke: var(--strip-color); stroke-width: 4px; stroke-dasharray: 0.15 0.85; stroke-dashoffset: 0.25; animation: strip-crawl 4s linear infinite; }
         @keyframes strip-crawl { to { stroke-dashoffset: -0.75; } }
+        
+        /* NEW: Style for the name in the About section */
+        .about-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-top: -1.5rem;
+            margin-bottom: 1.5rem;
+        }
 
         /* Product Card Styles */
         .product-card:hover { transform: translateY(-10px); }
@@ -61,7 +75,7 @@
         .designer-credit { font-size: 0.9rem; color: #ccc; margin-top: -10px; margin-bottom: 15px; }
         footer .admin-link { color: #aaa; text-decoration: none; font-size: 0.9rem; margin-top: 10px; display: block; }
         footer .admin-link:hover { color: #fff; }
-        @media (max-width: 768px) { .hero h1 { font-size: 2.4rem; } section h2 { font-size: 2.2rem; } nav .logo { font-size: 1.8rem; } }
+        @media (max-width: 768px) { .hero h1 { font-size: 2.4rem; } section h2 { font-size: 2.2rem; } nav .logo { font-size: 2.2rem; } }
 
         /* Contact Section Styles */
         #direct-contact .contact-box-glow { background: var(--card-bg); padding: 2rem; border-radius: 14px; text-align: center; margin-top: 3rem; box-shadow: 0 0 25px 4px rgba(231, 76, 60, 0.4); }
@@ -77,20 +91,12 @@
         
         .telegram-btn { background-color: #0088cc; box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3); }
         .telegram-btn:hover { background-color: #005f99; }
-
-        /* استایل دکمه اینستاگرام */
-        .instagram-btn {
-            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
-            box-shadow: 0 4px 15px rgba(214, 36, 159, 0.4);
-        }
-        .instagram-btn:hover {
-            opacity: 0.9;
-        }
+        
+        .instagram-btn { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); box-shadow: 0 4px 15px rgba(214, 36, 159, 0.4); }
+        .instagram-btn:hover { opacity: 0.9; }
 
         /* SVG Snake Border Animation */
-        @keyframes iran-crawl {
-            to { stroke-dashoffset: -1; }
-        }
+        @keyframes iran-crawl { to { stroke-dashoffset: -1; } }
         .iran-flag-border { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
         .iran-flag-border rect { fill: transparent; stroke-width: 4px; stroke-dasharray: 0.08 0.92; animation: iran-crawl 3s linear infinite; }
         .iran-flag-border .iran-green { stroke: #239F40; animation-delay: 0s; }
@@ -105,13 +111,14 @@
     <main>
         <section class="hero">
             <img src="images/IMG_6302.jpeg" alt="عکس فریبا خمک" class="profile-picture">
-            <h1>فروش محصولات ارگانیک و مشاوره تخصصی</h1>
+            <h1>فروش محصولات ارگانیک<br>و<br>مشاوره تخصصی</h1>
             <p>مورد تأیید سازمان غذا و دارو - فوراور آمریکا</p>
             <a href="#products" class="btn">مشاهده محصولات</a>
         </section>
         <section id="about" class="strip-card">
             <h2>درباره ما</h2>
-            <p>فریبا خمک، مشاور تخصصی انواع بیماری‌های پوست و مو. ما با ارائه محصولات ارگانیک و با کیفیت، به سلامت و زیبایی شما اهمیت می‌دهیم.</p>
+            <p class="about-name">فریبا خمک</p>
+            <p>مشاور تخصصی انواع بیماری‌های پوست و مو. ما با ارائه محصولات ارگانیک و با کیفیت، به سلامت و زیبایی شما اهمیت می‌دهیم.</p>
             <svg class="strip-border" width="100%" height="100%"><rect pathLength="1" rx="14" ry="14" width="100%" height="100%"/></svg>
         </section>
         <section id="products">
@@ -122,52 +129,31 @@
                 <div class="strip-card product-card"><img src="images/IMG_6305.jpeg" alt="Priorin"><h3>Priorin</h3><p>راهکاری موثر برای جلوگیری از ریزش مو و تقویت ریشه مو.</p><svg class="strip-border" width="100%" height="100%"><rect pathLength="1" rx="14" ry="14" width="100%" height="100%"/></svg></div>
             </div>
         </section>
-        
         <section id="direct-contact">
             <div class="contact-box-glow">
                 <h2>ارتباط مستقیم</h2>
                 <div class="contact-card">
                     <p>شماره تماس اول:</p>
                     <a class="phone-link" href="tel:+989191789829">0919-178-9829</a>
-                    <svg class="iran-flag-border" width="100%" height="100%">
-                        <rect class="iran-green" pathLength="1" rx="12" ry="12" width="100%" height="100%"/>
-                        <rect class="iran-white" pathLength="1" rx="12" ry="12" width="100%" height="100%"/>
-                        <rect class="iran-red" pathLength="1" rx="12" ry="12" width="100%" height="100%"/>
-                    </svg>
+                    <svg class="iran-flag-border" width="100%" height="100%"><rect class="iran-green" pathLength="1" rx="12" ry="12" width="100%" height="100%"/><rect class="iran-white" pathLength="1" rx="12" ry="12" width="100%" height="100%"/><rect class="iran-red" pathLength="1" rx="12" ry="12" width="100%" height="100%"/></svg>
                 </div>
                 <div class="contact-card">
                     <p>شماره تماس دوم:</p>
                     <a class="phone-link" href="tel:+989107783013">0910-778-3013</a>
-                    <svg class="iran-flag-border" width="100%" height="100%">
-                        <rect class="iran-green" pathLength="1" rx="12" ry="12" width="100%" height="100%"/>
-                        <rect class="iran-white" pathLength="1" rx="12" ry="12" width="100%" height="100%"/>
-                        <rect class="iran-red" pathLength="1" rx="12" ry="12" width="100%" height="100%"/>
-                    </svg>
+                    <svg class="iran-flag-border" width="100%" height="100%"><rect class="iran-green" pathLength="1" rx="12" ry="12" width="100%" height="100%"/><rect class="iran-white" pathLength="1" rx="12" ry="12" width="100%" height="100%"/><rect class="iran-red" pathLength="1" rx="12" ry="12" width="100%" height="100%"/></svg>
                 </div>
                 <div class="social-links">
                     <a href="https://api.whatsapp.com/send?phone=989191789829&text=سلام، برای مشاوره و سفارش محصول پیام میدهم." target="_blank" class="btn whatsapp-btn">
                         گفتگو در واتساپ
-                        <svg class="iran-flag-border" width="100%" height="100%">
-                            <rect class="iran-green" pathLength="1" rx="8" ry="8" width="100%" height="100%"/>
-                            <rect class="iran-white" pathLength="1" rx="8" ry="8" width="100%" height="100%"/>
-                            <rect class="iran-red" pathLength="1" rx="8" ry="8" width="100%" height="100%"/>
-                        </svg>
+                        <svg class="iran-flag-border" width="100%" height="100%"><rect class="iran-green" pathLength="1" rx="8" ry="8" width="100%" height="100%"/><rect class="iran-white" pathLength="1" rx="8" ry="8" width="100%" height="100%"/><rect class="iran-red" pathLength="1" rx="8" ry="8" width="100%" height="100%"/></svg>
                     </a>
                     <a href="https://t.me/Fkhomak" target="_blank" class="btn telegram-btn">
                         گفتگو در تلگرام
-                        <svg class="iran-flag-border" width="100%" height="100%">
-                            <rect class="iran-green" pathLength="1" rx="8" ry="8" width="100%" height="100%"/>
-                            <rect class="iran-white" pathLength="1" rx="8" ry="8" width="100%" height="100%"/>
-                            <rect class="iran-red" pathLength="1" rx="8" ry="8" width="100%" height="100%"/>
-                        </svg>
+                        <svg class="iran-flag-border" width="100%" height="100%"><rect class="iran-green" pathLength="1" rx="8" ry="8" width="100%" height="100%"/><rect class="iran-white" pathLength="1" rx="8" ry="8" width="100%" height="100%"/><rect class="iran-red" pathLength="1" rx="8" ry="8" width="100%" height="100%"/></svg>
                     </a>
                     <a href="https://www.instagram.com/faribakordestan?igsh=MWE2bHB5enhsd2VweA==" target="_blank" class="btn instagram-btn">
                         پیج اینستاگرام
-                        <svg class="iran-flag-border" width="100%" height="100%">
-                            <rect class="iran-green" pathLength="1" rx="8" ry="8" width="100%" height="100%"/>
-                            <rect class="iran-white" pathLength="1" rx="8" ry="8" width="100%" height="100%"/>
-                            <rect class="iran-red" pathLength="1" rx="8" ry="8" width="100%" height="100%"/>
-                        </svg>
+                        <svg class="iran-flag-border" width="100%" height="100%"><rect class="iran-green" pathLength="1" rx="8" ry="8" width="100%" height="100%"/><rect class="iran-white" pathLength="1" rx="8" ry="8" width="100%" height="100%"/><rect class="iran-red" pathLength="1" rx="8" ry="8" width="100%" height="100%"/></svg>
                     </a>
                 </div>
             </div>
