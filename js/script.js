@@ -1,10 +1,20 @@
+// --- START: NEW & IMPROVED SCROLL FIX ---
+// This is the modern way to prevent the browser from remembering the scroll position
+if (history.scrollRestoration) {
+    history.scrollRestoration = 'manual';
+}
+
+// As a fallback, force scroll to top right before the page is left or reloaded
+window.onbeforeunload = function () {
+    window.scrollTo(0, 0);
+};
+// --- END: NEW & IMPROVED SCROLL FIX ---
+
+
 document.addEventListener("DOMContentLoaded", function() {
 
-    // START: FIX SCROLL PROBLEM
-    // این کد صفحه را مجبور می‌کند که همیشه از بالا شروع شود
+    // Just to be safe, we scroll to top again here
     window.scrollTo(0, 0);
-    // END: FIX SCROLL PROBLEM
-
 
     // --- بخش ۱: کد مربوط به رمز عبور صفحه ادمین ---
     if (window.location.pathname.endsWith("admin.html")) {
