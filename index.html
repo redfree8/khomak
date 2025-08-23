@@ -31,34 +31,40 @@
         /* Header, Nav, Sections */
         header { background: var(--card-bg); padding: 1rem 0; box-shadow: 0 4px 10px var(--shadow-color); position: sticky; top: 0; z-index: 1000; }
         nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; align-items: center; padding: 0 2rem; }
-        nav .logo { font-size: 4rem; font-weight: 800; color: var(--primary-color); text-shadow: 1px 1px 2px var(--shadow-color); }
+        /* CHANGE: Logo is now a container for animation */
+        nav .logo { 
+            position: relative; /* Required for the animation */
+            font-size: 4rem; 
+            font-weight: 800; 
+            color: var(--primary-color); 
+            text-shadow: 1px 1px 2px var(--shadow-color); 
+            padding: 0.5rem 1.5rem; /* Space for the border */
+            border-radius: 15px; /* Rounded corners for the border */
+        }
         main { max-width: 1200px; margin: 0 auto; padding: 2rem; }
         section { margin-bottom: 2rem; }
         section h2 { text-align: center; margin-bottom: 2.5rem; font-size: 2.8rem; font-weight: 700; color: var(--primary-color); text-shadow: 1px 1px 3px var(--shadow-color); }
         
-        /* CHANGE: Hero section padding minimized for extreme compactness */
-        .hero { 
-            text-align: center; 
-            padding: 0 1rem 1.5rem 1rem; /* Top padding removed */
-        }
-        .hero h1 { 
-            font-size: 3.2rem; 
-            font-weight: 800; 
-            line-height: 1.5; 
-            margin-bottom: 0.75rem; 
-        }
+        .hero { text-align: center; padding: 0 1rem 1.5rem 1rem; }
+        .hero h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.5; margin-bottom: 0.75rem; }
         .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
 
-        /* CHANGE: Profile Picture margins adjusted to stick to elements */
+        /* NEW: Wrapper for profile picture animation */
+        .profile-picture-wrapper {
+            position: relative;
+            display: inline-block;
+            border-radius: 50%;
+            margin-top: 1rem;
+            margin-bottom: 0.2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
         .profile-picture { 
             width: 170px; 
             height: 170px; 
             border-radius: 50%; 
             object-fit: cover; 
-            margin-top: 1rem; /* Space from header */
-            margin-bottom: 0.2rem; /* Space to h1 minimized */
-            border: 4px solid var(--card-bg); 
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12), inset 0 1px 3px rgba(255, 255, 255, 0.6);
+            display: block; /* Fixes small gap under image */
+            border: 4px solid var(--card-bg);
         }
 
         /* Moving Strip Effect (Original) */
@@ -68,7 +74,6 @@
         .strip-border rect { fill: transparent; stroke: var(--strip-color); stroke-width: 4px; stroke-dasharray: 0.15 0.85; stroke-dashoffset: 0.25; animation: strip-crawl 4s linear infinite; }
         @keyframes strip-crawl { to { stroke-dashoffset: -0.75; } }
         
-        /* Style for the name in the About section */
         .about-name { font-size: 1.4rem; font-weight: 700; color: var(--primary-color); margin-top: -1.5rem; margin-bottom: 1.5rem; }
 
         /* Product Card Styles */
@@ -111,7 +116,13 @@
         /* SVG Snake Border Animation */
         @keyframes iran-crawl { to { stroke-dashoffset: -1; } }
         .iran-flag-border { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
-        .iran-flag-border rect { fill: transparent; stroke-width: 4px; stroke-dasharray: 0.08 0.92; animation: iran-crawl 3s linear infinite; }
+        .iran-flag-border rect { 
+            fill: transparent; 
+            /* CHANGE: Border thickness increased */
+            stroke-width: 6px; 
+            stroke-dasharray: 0.08 0.92; 
+            animation: iran-crawl 3s linear infinite; 
+        }
         .iran-flag-border .iran-green { stroke: #239F40; animation-delay: 0s; }
         .iran-flag-border .iran-white { stroke: #FFFFFF; animation-delay: -1s; }
         .iran-flag-border .iran-red { stroke: #DA0000; animation-delay: -2s; }
@@ -119,11 +130,27 @@
 </head>
 <body>
     <header>
-        <nav><div class="logo">فریبا خمک</div></nav>
+        <nav>
+            <div class="logo">
+                فریبا خمک
+                <svg class="iran-flag-border" width="100%" height="100%">
+                    <rect class="iran-green" pathLength="1" rx="15" ry="15" width="100%" height="100%"/>
+                    <rect class="iran-white" pathLength="1" rx="15" ry="15" width="100%" height="100%"/>
+                    <rect class="iran-red" pathLength="1" rx="15" ry="15" width="100%" height="100%"/>
+                </svg>
+            </div>
+        </nav>
     </header>
     <main>
         <section class="hero">
-            <img src="images/IMG_6302.jpeg" alt="عکس فریبا خمک" class="profile-picture">
+            <div class="profile-picture-wrapper">
+                <img src="images/IMG_6302.jpeg" alt="عکس فریبا خمک" class="profile-picture">
+                <svg class="iran-flag-border" width="100%" height="100%">
+                    <rect class="iran-green" pathLength="1" rx="999" ry="999" width="100%" height="100%"/>
+                    <rect class="iran-white" pathLength="1" rx="999" ry="999" width="100%" height="100%"/>
+                    <rect class="iran-red" pathLength="1" rx="999" ry="999" width="100%" height="100%"/>
+                </svg>
+            </div>
             <h1>فروش محصولات ارگانیک<br>و<br>مشاوره تخصصی</h1>
             <p>مورد تأیید سازمان غذا و دارو - فوراور آمریکا</p>
             <a href="#products" class="btn">مشاهده محصولات</a>
