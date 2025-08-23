@@ -29,17 +29,25 @@
         }
 
         /* Header, Nav, Sections */
-        header { background: var(--card-bg); padding: 1rem 0; box-shadow: 0 4px 10px var(--shadow-color); position: sticky; top: 0; z-index: 1000; }
+        /* CHANGE: Header background changed to golden gradient */
+        header { 
+            background: linear-gradient(135deg, #f0c74c 0%, #d3a01d 50%, #c0850d 100%);
+            padding: 1rem 0; 
+            box-shadow: 0 4px 10px var(--shadow-color); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+        }
         nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; align-items: center; padding: 0 2rem; }
-        /* CHANGE: Logo is now a container for animation */
+        /* CHANGE: Logo text color and shadow updated for new background */
         nav .logo { 
-            position: relative; /* Required for the animation */
+            position: relative; 
             font-size: 4rem; 
             font-weight: 800; 
-            color: var(--primary-color); 
-            text-shadow: 1px 1px 2px var(--shadow-color); 
-            padding: 0.5rem 1.5rem; /* Space for the border */
-            border-radius: 15px; /* Rounded corners for the border */
+            color: #4a3f0f; /* Darker text for contrast */
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3); /* Lighter shadow */
+            padding: 0.5rem 1.5rem; 
+            border-radius: 15px; 
         }
         main { max-width: 1200px; margin: 0 auto; padding: 2rem; }
         section { margin-bottom: 2rem; }
@@ -49,7 +57,6 @@
         .hero h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.5; margin-bottom: 0.75rem; }
         .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
 
-        /* NEW: Wrapper for profile picture animation */
         .profile-picture-wrapper {
             position: relative;
             display: inline-block;
@@ -63,7 +70,7 @@
             height: 170px; 
             border-radius: 50%; 
             object-fit: cover; 
-            display: block; /* Fixes small gap under image */
+            display: block; 
             border: 4px solid var(--card-bg);
         }
 
@@ -118,7 +125,6 @@
         .iran-flag-border { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
         .iran-flag-border rect { 
             fill: transparent; 
-            /* CHANGE: Border thickness increased */
             stroke-width: 6px; 
             stroke-dasharray: 0.08 0.92; 
             animation: iran-crawl 3s linear infinite; 
